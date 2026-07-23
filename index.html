@@ -6,6 +6,10 @@
 <title>Enviar currículo - Central CLT Itarema</title>
 <link rel="icon" type="image/png" href="logo.png">
 <style>
+  * {
+    box-sizing: border-box;
+  }
+
   body {
     background-color: #03528d;
     display: flex;
@@ -14,19 +18,29 @@
     min-height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
+    overflow: hidden;
   }
+
   .container {
     text-align: center;
+    opacity: 0;
+    animation: fadeInUp 0.9s ease-out forwards;
   }
+
   .image-container img {
     max-width: 200px;
     height: auto;
     display: block;
     margin: 0 auto;
+    animation: float 3.5s ease-in-out infinite;
   }
+
   .button-container {
     margin-top: 30px;
+    opacity: 0;
+    animation: fadeInUp 0.9s ease-out 0.4s forwards;
   }
+
   .button {
     background-color: #ffffff;
     border: none;
@@ -39,10 +53,52 @@
     font-weight: bold;
     cursor: pointer;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    animation: pulse 2.2s ease-in-out infinite;
   }
+
   .button:hover {
     background-color: #f0f0f0;
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+    animation-play-state: paused;
+  }
+
+  .button:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  /* Entrada suave de baixo para cima */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(25px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Logo flutuando suavemente */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Pulso sutil no botão para chamar atenção */
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15), 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+    50% {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15), 0 0 0 10px rgba(255, 255, 255, 0);
+    }
   }
 </style>
 </head>
@@ -53,7 +109,6 @@
     </div>
     <div class="button-container">
       <a href="mailto:curriculosgrupojsales@gmail.com?subject=Envio%20de%20curr%C3%ADculo%20%28Atendente%29" class="button">Enviar Currículo</a>
-     </div>
     </div>
   </div>
 </body>
